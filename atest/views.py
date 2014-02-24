@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from models import Food
+from models import Food, MPTTFood
 
 def _display(foods):
     """
@@ -22,3 +22,7 @@ def unordered_list(request):
     return render_to_response('atest/foods.html', {'foods': str})
     
 
+def mptttree_list(request):
+    nodes = MPTTFood.objects.all()
+    return render_to_response('atest/mpttfoods.html', {'nodes': nodes})
+    

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load mptt_tags %}
+
+{% block title %}MPTTFoods{% endblock %}
+
+{% block body %}
+
+{% recursetree nodes %}
+<li>
+    {% if node.is_leaf_node %}
+    <span style="color:red;">{{ node.title }}</span>
+    {% else %}
+    {{ node.title }}
+    <ul>
+        {{ children }}
+    </ul>
+    {% endif %}
+</li>
+{% endrecursetree %}
+
+{% endblock %}
